@@ -1,1 +1,2 @@
 # jk_flask_intro
+Progresīvās programmēšanas tehnoloģijas
