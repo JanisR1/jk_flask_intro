@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="lv">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/kontakti.css">
-    <title>Kontakti</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% set aktiva_lapa = 'kontakti' %}
+
+{% block saturs %}
     <h1>Kontakti</h1>
-    <p>Tālrunis: 12345678</p>
-</body>
-</html>
+    <p class="fs-5 col-md-8">Tālrunis: 12345678</p>
+    <form method="POST" action='/postData'>
+        <label >Vārds: <input type="text" name="vards"></label>
+        <input type="submit" value="Submit">
+{% endblock %}
