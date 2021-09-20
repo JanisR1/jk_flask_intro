@@ -3,28 +3,33 @@ from file_proc import pievienot
 
 app = Flask(__name__)
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+@app.route('/')
+def parEasyRedmine():
+    return render_template('par-easy-redmine.html')
 
-@app.route('/kontakti')
-def kontakti():
-    return render_template('kontakti.html')
+@app.route('/administresana')
+def administresana():
+    return render_template('administresana.html')
 
-@app.route('/hobiji')
-def hobiji():
-    return render_template('hobiji.html')
+@app.route('/ieviesana')
+def ieviesana():
+    return render_template('ieviesana.html')
 
-@app.route('/postData', methods = ['POST', 'GET'])
-def postData():
-    if request.method == 'GET':
-        return redirect('/home')
-    elif request.method == 'POST':
-        vards = request.form.get('vards')
-        pievienot(vards)
-        return redirect('/kontakti')
-    else:
-        return "This method not supported!"
+@app.route('/sazina')
+def sazina():
+    return render_template('sazina.html')
+
+@app.route('/dati')
+def dati():
+    rindinas = lasitDatus()
+    dati = []
+    for rindina in rindinas:
+        ieraksts = rindina.split(',')
+        dati.append(ieraksts)
+        dati2.append({'vards':ieraksts[0], 'uzvards':ieraksts[1], 'hobijs':ieraksts[2]})
+
+    #print(dati)
+    return render_template("dati.html", rindinas = dati, rindinas2 = dati2)
 
 if __name__ == '__main__':
     app.run(port=80, debug=True)
