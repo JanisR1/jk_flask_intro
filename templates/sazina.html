@@ -3,9 +3,31 @@
 {% set aktiva_lapa = 'sazina' %}
 
 {% block saturs %}
-    <h1>Kontakti</h1>
-    <p class="fs-5 col-md-8">Tālrunis: 12345678</p>
-    <form method="POST" action='/postData'>
-        <label >Vārds: <input type="text" name="vards"></label>
-        <input type="submit" value="Submit">
+<h1>Saziņa</h1>
+<p class="fs-5 col-md-8">Ja vēlaties iegūt papildus informāciju par projektu vadības sistēmu Easy Redmine, aizpildiet ziņojuma formu:</p>
+<form method="POST" action='/sutisana'>
+    <div class="form-group">
+        <label>Vārds <input type="text" name="vards"></label>
+    </div>
+    <p></p>
+    <div class="form-group">
+        <label>Uzvārds <input type="text" name="uzvards"></label>
+    </div>
+    <p></p>
+    <div class="form-group">
+        <label>E-pasts <input type="text" name="epasts"></label>
+    </div>
+    <p></p>
+    <div class="form-group">
+        <label>Ziņojums<input type="text" name="zinojums" style="width:340%"></label>
+    </div>
+    <p></p>
+    <button type="submit" class="btn btn-primary">Nosūtīt</button>
+  </form>
+  <p></p>
+  {% if nosutits == '1' %}
+  <div class="alert alert-success" role="alert">
+    Ziņojums ir nosūtīts.
+  </div>
+  {% endif %}
 {% endblock %}

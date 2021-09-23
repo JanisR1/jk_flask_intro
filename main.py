@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-from file_proc import pievienot
+from datu_apstrade import lasitDatus, pievienotEpastu, pievienotUzvardu, pievienotVardu, pievienotZinojumu
 
 app = Flask(__name__)
 
@@ -17,19 +17,34 @@ def ieviesana():
 
 @app.route('/sazina')
 def sazina():
-    return render_template('sazina.html')
+    statuss = request.args.get('statuss')
+    return render_template('sazina.html', nosutits = statuss)
+
+@app.route('/sutisana', methods = ['POST'])
+def sutisana():
+    vards = request.form.get('vards')
+    pievienotVardu(vards)
+
+    uzvards = request.form.get('uzvards')
+    pievienotUzvardu(uzvards)
+
+    epasts = request.form.get('epasts')
+    pievienotEpastu(epasts)
+
+    zinojums = request.form.get('zinojums')
+    pievienotZinojumu(zinojums)
+
+    return redirect('/sazina?statuss=1')
 
 @app.route('/dati')
 def dati():
-    rindinas = lasitDatus()
+    ieraksti = lasitDatus()
     dati = []
-    for rindina in rindinas:
-        ieraksts = rindina.split(',')
+    for ieraksts in ieraksti:
         dati.append(ieraksts)
-        dati2.append({'vards':ieraksts[0], 'uzvards':ieraksts[1], 'hobijs':ieraksts[2]})
+    grupetiDati = [dati[n:n+4] for n in range(0, len(dati), 4)]
 
-    #print(dati)
-    return render_template("dati.html", rindinas = dati, rindinas2 = dati2)
+    return render_template("dati.html", ieraksti = grupetiDati)
 
 if __name__ == '__main__':
     app.run(port=80, debug=True)
