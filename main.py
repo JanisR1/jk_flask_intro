@@ -3,40 +3,40 @@ from datu_apstrade import lasitDatus, pievienotEpastu, pievienotUzvardu, pievien
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def parEasyRedmine():
-    return render_template('par-easy-redmine.html')
+    return render_template("par-easy-redmine.html")
 
-@app.route('/administresana')
+@app.route("/administresana")
 def administresana():
-    return render_template('administresana.html')
+    return render_template("administresana.html")
 
-@app.route('/ieviesana')
-def ieviesana():
-    return render_template('ieviesana.html')
+@app.route("/galerija")
+def galerija():
+    return render_template("galerija.html")
 
-@app.route('/sazina')
+@app.route("/sazina")
 def sazina():
-    statuss = request.args.get('statuss')
-    return render_template('sazina.html', nosutits = statuss)
+    statuss = request.args.get("statuss")
+    return render_template("sazina.html", nosutits = statuss)
 
-@app.route('/sutisana', methods = ['POST'])
+@app.route("/sutisana", methods = ["POST"])
 def sutisana():
-    vards = request.form.get('vards')
+    vards = request.form.get("vards")
     pievienotVardu(vards)
 
-    uzvards = request.form.get('uzvards')
+    uzvards = request.form.get("uzvards")
     pievienotUzvardu(uzvards)
 
-    epasts = request.form.get('epasts')
+    epasts = request.form.get("epasts")
     pievienotEpastu(epasts)
 
-    zinojums = request.form.get('zinojums')
+    zinojums = request.form.get("zinojums")
     pievienotZinojumu(zinojums)
 
-    return redirect('/sazina?statuss=1')
+    return redirect("/sazina?statuss=1")
 
-@app.route('/dati')
+@app.route("/dati")
 def dati():
     ieraksti = lasitDatus()
     dati = []
@@ -46,5 +46,5 @@ def dati():
 
     return render_template("dati.html", ieraksti = grupetiDati)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(port=80, debug=True)

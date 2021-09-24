@@ -2,3 +2,11 @@ Jānis
 Rajeckis
 janis_rajeckis@inbox.lv
 Lūdzu sniegt papildus informāciju par administrēšanas sadaļu.
+
+
+andris.paraugs@test.lv
+Lūdzu sniegt papildus informāciju par projektu laika plānošanu.
+
+Bērziņš
+ivars.berzins@gmail.com
+Lūdzu sniegt papildus informāciju par uzdevumu statusu uzstādīšanu.
