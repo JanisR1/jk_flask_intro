@@ -10,3 +10,7 @@ Lūdzu sniegt papildus informāciju par projektu laika plānošanu.
 Bērziņš
 ivars.berzins@gmail.com
 Lūdzu sniegt papildus informāciju par uzdevumu statusu uzstādīšanu.
+Tests
+Paraudziņš
+tests@tests.lv
+Nepieciešama papildus informācija.
